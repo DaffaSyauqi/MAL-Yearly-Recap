@@ -25,13 +25,22 @@
           textShadow: '0 0 16px rgba(0, 0, 0, 0.5)',
         }"
       >
-        Yearly Anime Recap 2025
+        Yearly Anime Recap
       </p>
+
+      <p
+        class="mt-1 max-w-[42ch] mx-auto text-white/60 text-[clamp(0.9rem,1.2vw,1.05rem)] text-center leading-relaxed"
+      >
+        Relive your anime journey. From favorite genres to the anime that
+        defined your year.
+      </p>
+
       <div class="flex items-center justify-center gap-4 mt-8">
         <button
           ref="loginBtn"
-          class="bg-white hover:bg-gray-100 px-6 md:px-10 py-2 md:py-3 border-none rounded-[50px] font-medium text-[12px] text-black md:text-[14px] cursor-pointer"
+          class="inline-flex items-center bg-white hover:bg-gray-100 px-6 md:px-10 py-2 md:py-3 border-none rounded-[50px] font-medium text-[12px] text-black md:text-[14px] cursor-pointer"
         >
+          <Icon name="simple-icons:myanimelist" class="w-5 h-5 mr-2" />
           Login with MyAnimeList
         </button>
 
@@ -42,7 +51,7 @@
           rel="noopener noreferrer"
           class="inline-flex items-center bg-white/5 hover:bg-white/10 shadow-md backdrop-blur-md px-6 md:px-10 py-2 md:py-3 border border-white/20 rounded-full font-medium text-[12px] text-white/50 md:text-[14px] cursor-pointer"
         >
-          <Icon name="lucide-github" class="w-4 h-4 mr-2" />
+          <Icon name="lucide-github" class="w-5 h-5 mr-2" />
           <span>Star on Github</span>
         </a>
       </div>
