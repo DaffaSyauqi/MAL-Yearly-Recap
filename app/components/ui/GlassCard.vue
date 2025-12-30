@@ -6,6 +6,11 @@
       class="w-full max-w-4xl min-h-[82vh] md:min-h-[86vh] bg-white/5 backdrop-blur-md border border-white/20 shadow-md rounded-3xl px-8 py-10 md:px-12 md:py-14 text-white flex flex-col justify-center"
     >
       <slot />
+      <div class="text-white/50 text-md animate-pulse">
+        <div class="absolute inset-x-0 bottom-4 text-center">
+          <span>Scroll to next ↓</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>

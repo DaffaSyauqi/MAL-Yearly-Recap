@@ -1,3 +1,3 @@
 <template>
-  <CardIntro />
+  <CardEpisodeWatched />
 </template>
