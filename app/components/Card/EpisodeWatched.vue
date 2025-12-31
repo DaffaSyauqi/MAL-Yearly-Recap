@@ -70,14 +70,14 @@ onMounted(() => {
     duration: 1.2,
     ease: "power3.out",
     roundProps: "value",
-    delay: 0.2,
+    delay: 0.5,
   });
   gsap.to(displayTotalDay, {
     value: totalDaysByEpisode,
-    duration: 1.5,
+    duration: 1.7,
     ease: "power3.out",
     roundProps: "value",
-    delay: 0.2,
+    delay: 0.5,
   });
 });
 </script>

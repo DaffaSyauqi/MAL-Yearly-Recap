@@ -1,7 +1,7 @@
 <template>
   <uiGlassCard>
     <div
-      class="flex flex-col justify-center text-center items-center space-y-8"
+      class="flex flex-col justify-center text-center items-center h-full space-y-8"
     >
       <div class="text-center space-y-2">
         <div class="flex justify-center">
@@ -27,11 +27,6 @@
         >
           Anime released in this year that you watched
         </p>
-      </div>
-      <div class="text-white/50 text-md animate-pulse">
-        <div class="absolute inset-x-0 bottom-4 text-center">
-          <span>Scroll to start ↓</span>
-        </div>
       </div>
     </div>
   </uiGlassCard>

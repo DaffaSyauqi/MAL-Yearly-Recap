@@ -47,7 +47,7 @@ onMounted(() => {
     duration: 1.2,
     ease: "power3.out",
     roundProps: "value",
-    delay: 0.2,
+    delay: 0.5,
   });
 });
 </script>
