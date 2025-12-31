@@ -22,9 +22,16 @@
           }"
         >
           <!-- SEASON TITLE -->
-          <p class="text-white/80 text-xs sm:text-sm font-medium">
-            {{ season.name }}
-          </p>
+          <div
+            class="flex items-center gap-2 text-white/80 text-xs sm:text-sm font-medium"
+          >
+            <Icon
+              :name="season.icon"
+              class="w-4 h-4"
+              :style="{ color: season.iconColor }"
+            />
+            <span>{{ season.name }}</span>
+          </div>
 
           <!-- COVER -->
           <img
@@ -52,7 +59,9 @@ const cardRefs = ref([]);
 
 const seasons = [
   {
-    name: "❄️ Winter",
+    icon: "lucide-snowflake",
+    iconColor: "#BFDBFE", // blue-200
+    name: "Winter",
     anime: "Sousou no Frieren",
     cover: "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
     bg: "rgba(59, 130, 246, 0.50)",
@@ -60,7 +69,9 @@ const seasons = [
     border: "rgba(147, 197, 253, 0.45)",
   },
   {
-    name: "🌸 Spring",
+    icon: "lucide-flower",
+    iconColor: "#FBCFE8", // pink-200
+    name: "Spring",
     anime: "Horimiya: Missing Pieces",
     cover: "https://placehold.co/400x600/png",
     bg: "rgba(244, 114, 182, 0.50)",
@@ -68,7 +79,9 @@ const seasons = [
     border: "rgba(251, 207, 232, 0.45)",
   },
   {
-    name: "☀️ Summer",
+    icon: "lucide-sun",
+    iconColor: "#FDE68A", // yellow-200
+    name: "Summer",
     anime: "Jujutsu Kaisen S3",
     cover: "https://placehold.co/400x600/png",
     bg: "rgba(251, 191, 36, 0.50)",
@@ -76,7 +89,9 @@ const seasons = [
     border: "rgba(253, 230, 138, 0.45)",
   },
   {
-    name: "🍂 Fall",
+    icon: "lucide-leaf",
+    iconColor: "#FECACA", // red-200
+    name: "Fall",
     anime: "Attack on Titan Final",
     cover: "https://placehold.co/400x600/png",
     bg: "rgba(248, 113, 113, 0.50)",

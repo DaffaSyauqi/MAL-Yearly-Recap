@@ -51,7 +51,7 @@
           rel="noopener noreferrer"
           class="inline-flex items-center bg-white/5 hover:bg-white/10 shadow-md backdrop-blur-md px-6 md:px-10 py-2 md:py-3 border border-white/20 rounded-full font-medium text-[12px] text-white/50 md:text-[14px] cursor-pointer"
         >
-          <Icon name="lucide-github" class="w-5 h-5 mr-2" />
+          <Icon name="simple-icons:github" class="w-5 h-5 mr-2" />
           <span>Star on Github</span>
         </a>
       </div>

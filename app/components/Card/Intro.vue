@@ -14,10 +14,7 @@
         <p class="text-white/70 text-lg">DaffaSyauqi</p>
 
         <p
-          class="mt-2 max-w-[24ch] font-bold text-[clamp(3rem,5vw,2.6rem)] text-white text-center leading-[1.2] tracking-[-2px]"
-          :style="{
-            textShadow: '0 0 16px rgba(0, 0, 0, 0.5)',
-          }"
+          class="mt-2 max-w-[24ch] font-bold text-[clamp(3rem,5vw,2.6rem)] text-center text-white tracking-tight leading-none"
         >
           Your Anime Recap 2025
         </p>

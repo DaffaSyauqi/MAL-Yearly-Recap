@@ -25,6 +25,9 @@ import CardAnimeWatched from "@/components/Card/AnimeWatched.vue";
 import CardEpisodeWatched from "@/components/Card/EpisodeWatched.vue";
 import CardFavoriteGenre from "@/components/Card/FavoriteGenre.vue";
 import CardBestAnimeSeason from "@/components/Card/BestAnimeSeason.vue";
+import CardTopAnime from "@/components/Card/TopAnime.vue";
+import CardWatchingStyle from "@/components/Card/WatchingStyle.vue";
+import CardRecapSummary from "@/components/Card/RecapSummary.vue";
 
 const cards = [
   CardIntro,
@@ -32,6 +35,9 @@ const cards = [
   CardEpisodeWatched,
   CardFavoriteGenre,
   CardBestAnimeSeason,
+  CardTopAnime,
+  CardWatchingStyle,
+  CardRecapSummary,
 ];
 
 const activeIndex = ref(0);
