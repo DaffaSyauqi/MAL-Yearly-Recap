@@ -8,7 +8,9 @@
         Your Watching Style
       </p>
       <!-- BADGE / EMOJI -->
-      <div ref="badge" class="text-6xl mb-6 select-none">🍿</div>
+      <div ref="badge" class="text-6xl text-white/80 mb-6 select-none">
+        <Icon name="lucide-popcorn" />
+      </div>
 
       <!-- TITLE -->
       <h1

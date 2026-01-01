@@ -28,6 +28,7 @@ import CardBestAnimeSeason from "@/components/Card/BestAnimeSeason.vue";
 import CardTopAnime from "@/components/Card/TopAnime.vue";
 import CardWatchingStyle from "@/components/Card/WatchingStyle.vue";
 import CardRecapSummary from "@/components/Card/RecapSummary.vue";
+import CardClosing from "@/components/Card/Closing.vue";
 
 const cards = [
   CardIntro,
@@ -38,6 +39,7 @@ const cards = [
   CardTopAnime,
   CardWatchingStyle,
   CardRecapSummary,
+  CardClosing,
 ];
 
 const activeIndex = ref(0);
