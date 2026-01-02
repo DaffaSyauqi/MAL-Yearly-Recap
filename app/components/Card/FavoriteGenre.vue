@@ -3,19 +3,16 @@
     <div
       class="flex flex-col justify-center items-center text-center h-full space-y-8"
     >
-      <!-- TITLE -->
       <p class="text-white/60 text-[clamp(1.2rem,1.2vw,1.1rem)] tracking-wide">
         Your favorite genres in 2025
       </p>
 
-      <!-- GENRE LIST -->
       <div class="w-full max-w-xl space-y-5">
         <div
           v-for="(genre, index) in genres"
           :key="genre.name"
           class="space-y-2"
         >
-          <!-- LABEL -->
           <div class="flex justify-between text-white/80 text-sm">
             <span>{{ index + 1 }}. {{ genre.name }}</span>
             <span>{{ genre.count }} anime</span>
@@ -34,7 +31,6 @@
         </div>
       </div>
 
-      <!-- INSIGHT -->
       <p
         class="max-w-[42ch] text-white/50 text-[clamp(1rem,1.1vw,1rem)] leading-relaxed"
       >

@@ -3,7 +3,6 @@
     <div
       class="w-full h-full flex flex-col justify-between space-y-8 pb-8 md:p-8"
     >
-      <!-- HEADER -->
       <div class="flex items-center gap-4">
         <img
           src="https://ui-avatars.com/api/?name=daffasyauqi&background=4F46E5&color=fff&size=64"
@@ -25,9 +24,7 @@
         </div>
       </div>
 
-      <!-- MAIN CONTENT -->
       <div class="grid grid-cols-2 md:grid-cols-2 gap-8">
-        <!-- LEFT : TOP ANIME -->
         <div class="text-left">
           <p
             class="text-white/50 text-[clamp(1rem,1.1vw,1rem)] leading-relaxed mb-4"
@@ -53,7 +50,6 @@
           </ul>
         </div>
 
-        <!-- RIGHT : TOP GENRES -->
         <div class="text-left">
           <p
             class="text-white/50 text-[clamp(1rem,1.1vw,1rem)] leading-relaxed mb-4"
@@ -80,7 +76,6 @@
         </div>
       </div>
 
-      <!-- BOTTOM STATS -->
       <div class="grid grid-cols-2 gap-6 pt-6 border-t border-white/10">
         <div class="text-left">
           <p

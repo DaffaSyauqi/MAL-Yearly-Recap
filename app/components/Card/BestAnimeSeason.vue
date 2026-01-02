@@ -4,12 +4,10 @@
       ref="containerRef"
       class="flex flex-col justify-center items-center text-center h-full space-y-4"
     >
-      <!-- TITLE -->
       <p class="text-white/60 text-[clamp(1.1rem,1.2vw,1rem)] tracking-wide">
         Best anime you watched in each season
       </p>
 
-      <!-- SEASON GRID -->
       <div class="grid grid-cols-2 gap-4 sm:gap-6 w-full max-w-xl">
         <div
           v-for="season in seasons"
@@ -21,7 +19,6 @@
             boxShadow: season.glow,
           }"
         >
-          <!-- SEASON TITLE -->
           <div
             class="flex items-center gap-2 text-white/80 text-xs sm:text-sm font-medium"
           >
@@ -33,14 +30,12 @@
             <span>{{ season.name }}</span>
           </div>
 
-          <!-- COVER -->
           <img
             :src="season.cover"
             alt="Anime cover"
             class="w-full max-w-[60px] sm:max-w-[90px] rounded-lg object-cover"
           />
 
-          <!-- ANIME TITLE -->
           <p class="text-white font-medium text-xs leading-snug">
             {{ season.anime }}
           </p>
@@ -101,7 +96,6 @@ const seasons = [
 ];
 
 onMounted(() => {
-  // ENTRY ANIMATION
   gsap.from(cardRefs.value, {
     opacity: 0,
     y: 20,
@@ -110,7 +104,6 @@ onMounted(() => {
     stagger: 0.12,
   });
 
-  // HOVER ANIMATION
   cardRefs.value.forEach((card) => {
     card.addEventListener("mouseenter", () => {
       gsap.to(card, {

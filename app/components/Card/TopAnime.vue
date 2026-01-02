@@ -3,7 +3,6 @@
     <div
       class="relative w-full h-full flex items-center justify-center overflow-hidden space-y-8"
     >
-      <!-- PHASE 1 : CAROUSEL -->
       <div
         ref="phase1"
         class="absolute inset-0 flex flex-col justify-center items-center"
@@ -14,12 +13,10 @@
           Your top anime of 2025 is...
         </p>
 
-        <!-- CAROUSEL -->
         <div class="relative w-full mt-6 overflow-hidden">
           <div
             class="pointer-events-none absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-black/30 to-transparent z-10"
           />
-
           <div
             class="pointer-events-none absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-black/30 to-transparent z-10"
           />
@@ -35,7 +32,6 @@
         </div>
       </div>
 
-      <!-- PHASE 2 : REVEAL -->
       <div
         ref="phase2"
         class="relative z-20 flex flex-col items-center text-center opacity-0"
@@ -51,7 +47,6 @@
           {{ topAnime.title }}
         </h2>
 
-        <!-- META -->
         <div class="mt-2 flex items-center gap-2 text-3xl">
           <Icon name="lucide-star" class="text-yellow-400" />
           <span class="text-white/60 tracking-wide">{{ topAnime.score }}</span>
@@ -101,19 +96,16 @@ onMounted(() => {
     repeat: -1,
   });
 
-  // MASTER TIMELINE
   const tl = gsap.timeline({ delay: 3 });
 
-  // EXIT CAROUSEL
   tl.to(phase1.value, {
     opacity: 0,
     scale: 0.94,
     filter: "blur(14px)",
-    duration: 2,
+    duration: 1,
     ease: "power2.inOut",
   });
 
-  // REVEAL TOP ANIME
   tl.to(
     phase2.value,
     {

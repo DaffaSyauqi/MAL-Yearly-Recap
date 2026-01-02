@@ -38,7 +38,7 @@
 import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 
-const totalAnime = 128; // dummy, nanti dari MAL
+const totalAnime = 128;
 const displayCount = ref(0);
 
 onMounted(() => {

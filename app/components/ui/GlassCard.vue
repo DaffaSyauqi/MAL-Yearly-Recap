@@ -7,7 +7,6 @@
     >
       <slot />
 
-      <!-- SCROLL HINT -->
       <div
         v-if="hiddenScrollHint !== true"
         class="absolute inset-x-0 bottom-5 flex justify-center items-center gap-1 text-white/40 text-sm animate-pulse"

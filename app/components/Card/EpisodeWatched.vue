@@ -8,7 +8,6 @@
       </p>
 
       <div class="grid grid-cols items-center">
-        <!-- Episodes -->
         <div class="flex flex-col">
           <p
             class="font-extrabold text-[clamp(5rem,5vw,6rem)] text-white leading-none"
@@ -23,14 +22,12 @@
           </p>
         </div>
 
-        <!-- OR -->
         <p
           class="font-semibold text-white/60 text-[clamp(1rem,2vw,1.4rem)] select-none"
         >
           or
         </p>
 
-        <!-- Days -->
         <div class="flex flex-col">
           <p
             class="font-extrabold text-[clamp(5rem,5vw,6rem)] text-white leading-none"
@@ -59,8 +56,8 @@
 import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 
-const totalEpisodeWatched = 1389; // dummy, nanti dari MAL
-const totalDaysByEpisode = 67; // dummy, nanti dari MAL
+const totalEpisodeWatched = 1389;
+const totalDaysByEpisode = 67;
 const displayTotalEpisode = ref(0);
 const displayTotalDay = ref(0);
 

@@ -48,9 +48,6 @@ const cardContainer = ref(null);
 let isAnimating = false;
 let touchStartY = 0;
 
-/* --------------------
-   TRANSITION
--------------------- */
 const animateCard = (direction = "next") => {
   const yFrom = direction === "next" ? 60 : -60;
   const yTo = direction === "next" ? -60 : 60;
@@ -87,9 +84,6 @@ const animateCard = (direction = "next") => {
   );
 };
 
-/* --------------------
-   NAVIGATION
--------------------- */
 const next = () => {
   if (isAnimating || activeIndex.value >= cards.length - 1) return;
   isAnimating = true;
@@ -104,17 +98,11 @@ const prev = () => {
   animateCard("prev");
 };
 
-/* --------------------
-   WHEEL
--------------------- */
 const onWheel = (e) => {
   if (Math.abs(e.deltaY) < 30) return;
   e.deltaY > 0 ? next() : prev();
 };
 
-/* --------------------
-   TOUCH (MOBILE)
--------------------- */
 const onTouchStart = (e) => {
   touchStartY = e.touches[0].clientY;
 };

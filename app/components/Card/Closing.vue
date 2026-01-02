@@ -3,7 +3,6 @@
     <div
       class="w-full h-full flex flex-col items-center justify-center text-center gap-8 px-6 py-12"
     >
-      <!-- MESSAGE -->
       <div class="space-y-2">
         <h2
           class="text-3xl md:text-4xl font-bold text-white tracking-tight leading-none flex items-center justify-center gap-4"
@@ -18,7 +17,6 @@
         </p>
       </div>
 
-      <!-- ACTION BUTTONS -->
       <div class="flex gap-4">
         <button
           class="px-6 py-3 rounded-xl bg-white/15 text-white font-medium hover:bg-white/25 transition flex items-center"
