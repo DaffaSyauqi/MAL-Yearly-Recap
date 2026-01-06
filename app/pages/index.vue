@@ -38,6 +38,7 @@
       <div class="flex items-center justify-center gap-4 mt-8">
         <button
           ref="loginBtn"
+          @click="login"
           class="inline-flex items-center bg-white hover:bg-gray-100 px-6 md:px-10 py-2 md:py-3 border-none rounded-[50px] font-medium text-[12px] text-black md:text-[14px] cursor-pointer"
         >
           <Icon name="simple-icons:myanimelist" class="w-5 h-5 mr-2" />
@@ -65,6 +66,10 @@ import gsap from "gsap";
 
 const loginBtn = ref(null);
 const githubBtn = ref(null);
+
+const login = () => {
+  window.location.href = "/api/auth/login";
+};
 
 onMounted(() => {
   const buttons = [loginBtn.value, githubBtn.value];
