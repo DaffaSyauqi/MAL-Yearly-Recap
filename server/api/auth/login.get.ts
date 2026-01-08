@@ -1,14 +1,11 @@
-import { generateCodeVerifier, generateCodeChallenge } from "../../utils/pkce";
+import { generateCodeVerifier } from "../../../utils/pkce";
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
-
   const codeVerifier = generateCodeVerifier();
-  const codeChallenge = generateCodeChallenge(codeVerifier);
 
   setCookie(event, "mal_code_verifier", codeVerifier, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
   });
@@ -17,7 +14,8 @@ export default defineEventHandler(async (event) => {
     response_type: "code",
     client_id: config.public.malClientId,
     redirect_uri: config.public.malRedirectUri,
-    code_challenge: codeChallenge,
+
+    code_challenge: codeVerifier,
     code_challenge_method: "plain",
   });
 

@@ -18,26 +18,30 @@ export default defineEventHandler(async (event) => {
   const body = new URLSearchParams({
     client_id: config.public.malClientId,
     client_secret: config.malClientSecret,
-    code,
-    code_verifier: codeVerifier,
     grant_type: "authorization_code",
+    code,
     redirect_uri: config.public.malRedirectUri,
+    code_verifier: codeVerifier,
   });
 
-  const tokenRes = await $fetch("https://myanimelist.net/v1/oauth2/token", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: body.toString(),
-  });
+  const tokenRes: { access_token: string } = await $fetch(
+    "https://myanimelist.net/v1/oauth2/token",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: body.toString(),
+    }
+  );
 
   setCookie(event, "mal_access_token", tokenRes.access_token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
   });
 
   deleteCookie(event, "mal_code_verifier");
+
+  return sendRedirect(event, "/recap");
 });
