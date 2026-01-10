@@ -1,4 +1,4 @@
-import { generateCodeVerifier } from "../../../utils/pkce";
+import { generateCodeVerifier } from "../../utils/pkce";
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
