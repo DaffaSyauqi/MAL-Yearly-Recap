@@ -17,19 +17,26 @@
         </p>
       </div>
 
-      <div class="flex gap-4">
+      <div class="flex gap-2">
         <button
-          class="px-6 py-3 rounded-xl bg-white/15 text-white font-medium hover:bg-white/25 transition flex items-center"
+          class="inline-flex items-center bg-blue-500 hover:bg-blue-600 px-6 md:px-10 py-2 md:py-3 border-none rounded-[50px] font-medium text-[12px] text-white md:text-[14px] cursor-pointer"
+        >
+          <Icon name="lucide-refresh-cw" class="w-5 h-5 mr-2" />
+          <span>Generate Again</span>
+        </button>
+
+        <button
+          class="inline-flex items-center bg-white/5 hover:bg-white/10 shadow-md backdrop-blur-md px-6 md:px-10 py-2 md:py-3 border border-white/20 rounded-full font-medium text-[12px] text-white/50 md:text-[14px] cursor-pointer"
         >
           <Icon name="lucide-share-2" class="w-5 h-5 mr-2" />
           <span>Share</span>
         </button>
 
         <button
-          class="px-6 py-3 rounded-xl bg-indigo-500/80 text-white font-medium hover:bg-indigo-500 transition flex items-center"
+          class="inline-flex items-center bg-white/5 hover:bg-white/10 shadow-md backdrop-blur-md px-6 md:px-10 py-2 md:py-3 border border-white/20 rounded-full font-medium text-[12px] text-white/50 md:text-[14px] cursor-pointer"
         >
-          <Icon name="lucide-refresh-cw" class="w-5 h-5 mr-2" />
-          <span>Generate Again</span>
+          <Icon name="lucide-log-out" class="w-5 h-5 mr-2" />
+          <span>Log Out</span>
         </button>
       </div>
     </div>
