@@ -21,8 +21,22 @@ export async function fetchAllAnimeList(token: string) {
       query: {
         limit,
         offset,
-        fields:
-          "list_status,num_episodes,genres,start_date,end_date,media_type,season,mean",
+        /**
+         * Field yang diambil DISESUAIKAN
+         * dengan kebutuhan recap USER (bukan MAL global)
+         */
+        fields: [
+          // status user (score, status, start_date, finish_date, num_episodes_watched)
+          "list_status",
+
+          // metadata anime
+          "genres",
+          "media_type",
+          "mean", // hanya untuk tie-breaker ranking
+          "start_season",
+          "main_picture",
+          "title",
+        ].join(","),
       },
     });
 

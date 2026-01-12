@@ -1,12 +1,54 @@
+import { fetchMALUser, fetchAllAnimeList } from "../../services/mal.services";
+import { filterAnimeByYear } from "../../utils/mal-filter";
+import { calculateRecapStats } from "../../utils/mal-calculate";
+
 export default defineEventHandler(async (event) => {
   const token = getCookie(event, "mal_access_token");
+
+  // Default
+  const year = "2025";
+  // const year = getQuery(event).year || "all-time";
+
   if (!token) {
-    throw createError({ statusCode: 401, statusMessage: "Not authenticated" });
+    throw createError({
+      statusCode: 401,
+      statusMessage: "Not authenticated",
+    });
   }
 
-  return await $fetch("https://api.myanimelist.net/v2/users/@me", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  try {
+    const [user, animeList] = await Promise.all([
+      fetchMALUser(token),
+      fetchAllAnimeList(token),
+    ]);
+
+    const filtered = filterAnimeByYear(animeList, String(year));
+    const stats = calculateRecapStats(filtered);
+
+    return {
+      meta: {
+        mode: year,
+      },
+      user: {
+        name: user.name,
+        avatar: user.picture,
+      },
+      stats,
+      recap: {
+        animeList: filtered,
+      },
+    };
+  } catch (err: any) {
+    if (err?.response?.status === 401) {
+      throw createError({
+        statusCode: 401,
+        statusMessage: "Token expired",
+      });
+    }
+
+    throw createError({
+      statusCode: 502,
+      statusMessage: "MyAnimeList service error",
+    });
+  }
 });
