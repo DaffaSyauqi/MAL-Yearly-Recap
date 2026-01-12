@@ -17,10 +17,17 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    const [user, animeList] = await Promise.all([
+    type MALUser = {
+      name: string;
+      picture: string;
+    };
+
+    const [userRaw, animeList] = await Promise.all([
       fetchMALUser(token),
       fetchAllAnimeList(token),
     ]);
+
+    const user = userRaw as MALUser;
 
     const filtered = filterAnimeByYear(animeList, String(year));
     const stats = calculateRecapStats(filtered);
@@ -48,7 +55,7 @@ export default defineEventHandler(async (event) => {
 
     throw createError({
       statusCode: 502,
-      statusMessage: "MyAnimeList service error",
+      statusMessage: "MyAnimeList data not found",
     });
   }
 });
