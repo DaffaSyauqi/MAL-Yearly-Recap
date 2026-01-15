@@ -5,9 +5,9 @@
     >
       <div class="text-center space-y-2">
         <div class="flex justify-center">
-          <img :src="recap?.user?.avatar" class="w-24 h-24 rounded-xl" />
+          <img :src="props.recap?.user?.avatar" class="w-24 h-24 rounded-xl" />
         </div>
-        <p class="text-white/70 text-lg">{{ recap?.user?.name }}</p>
+        <p class="text-white/70 text-lg">{{ props.recap?.user?.name }}</p>
 
         <p
           class="mt-2 max-w-[24ch] font-bold text-[clamp(3rem,5vw,2.6rem)] text-center text-white tracking-tight leading-none"
@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
   recap: {
     type: Object,
     required: true,
