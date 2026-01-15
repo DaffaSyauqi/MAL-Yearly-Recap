@@ -22,9 +22,9 @@
           />
           <div ref="carouselTrack" class="flex gap-3 w-max">
             <img
-              v-for="(anime, i) in loopPosters"
+              v-for="(poster, i) in loopPosters"
               :key="i"
-              :src="anime"
+              :src="poster?.image"
               class="w-32 md:w-48 aspect-[2/3] object-cover rounded-lg"
               draggable="false"
             />
@@ -37,19 +37,21 @@
         class="relative z-20 flex flex-col items-center text-center opacity-0"
       >
         <img
-          :src="topAnime.cover"
+          :src="props.recap?.stats?.topAnime?.image"
           class="w-56 h-80 object-cover rounded-2xl shadow-2xl"
         />
 
         <h2
           class="mt-6 text-3xl font-bold text-white tracking-tight leading-none"
         >
-          {{ topAnime.title }}
+          {{ props.recap?.stats?.topAnime?.title }}
         </h2>
 
         <div class="mt-2 flex items-center gap-2 text-3xl">
           <Icon name="lucide-star" class="text-yellow-400" />
-          <span class="text-white/60 tracking-wide">{{ topAnime.score }}</span>
+          <span class="text-white/60 tracking-wide">{{
+            props.recap?.stats?.topAnime?.userScore
+          }}</span>
         </div>
       </div>
     </div>
@@ -60,27 +62,26 @@
 import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 
+const props = defineProps({
+  recap: {
+    type: Object,
+    required: true,
+  },
+});
+
 const phase1 = ref();
 const phase2 = ref();
 
-const posters = [
-  "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
-  "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
-  "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
-  "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
-  "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
-  "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
-  "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
-];
+const posters = computed(() => {
+  const list = props.recap.stats.carousel ?? [];
+  if (!list.length) return [];
 
-const topAnime = {
-  title: "Sousou no Frieren",
-  score: 9,
-  episodes: 24,
-  cover: "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
-};
+  return list.map((c: any, index: any) => ({
+    image: c.image,
+  }));
+});
 
-const loopPosters = [...posters, ...posters];
+const loopPosters = posters.value;
 const carouselTrack = ref<HTMLElement | null>(null);
 
 onMounted(() => {

@@ -14,11 +14,10 @@
           class="space-y-2"
         >
           <div class="flex justify-between text-white/80 text-sm">
-            <span>{{ index + 1 }}. {{ genre.name }}</span>
+            <span>{{ Number(index) + 1 }}. {{ genre.name }}</span>
             <span>{{ genre.count }} anime</span>
           </div>
 
-          <!-- BAR -->
           <div class="w-full h-2 rounded-full bg-white/10 overflow-hidden">
             <div
               ref="bars"
@@ -41,52 +40,50 @@
   </uiGlassCard>
 </template>
 
-<script setup>
-import { ref, onMounted } from "vue";
+<script setup lang="ts">
+import { ref, computed, onMounted, nextTick } from "vue";
 import { gsap } from "gsap";
 
 const bars = ref([]);
 
-const genres = [
-  {
-    name: "Romance",
-    count: 28,
-    percent: 100,
-    color: "linear-gradient(90deg, #f472b6, #fb7185)",
+const props = defineProps({
+  recap: {
+    type: Object,
+    required: true,
   },
-  {
-    name: "Drama",
-    count: 21,
-    percent: 75,
-    color: "linear-gradient(90deg, #a78bfa, #818cf8)",
-  },
-  {
-    name: "Slice of Life",
-    count: 18,
-    percent: 64,
-    color: "linear-gradient(90deg, #34d399, #22d3ee)",
-  },
-  {
-    name: "Supernatural",
-    count: 14,
-    percent: 50,
-    color: "linear-gradient(90deg, #facc15, #fb923c)",
-  },
-  {
-    name: "Thriller",
-    count: 9,
-    percent: 32,
-    color: "linear-gradient(90deg, #fb7185, #ef4444)",
-  },
+});
+
+const colors = [
+  "linear-gradient(90deg, #f472b6, #fb7185)",
+  "linear-gradient(90deg, #a78bfa, #818cf8)",
+  "linear-gradient(90deg, #34d399, #22d3ee)",
+  "linear-gradient(90deg, #facc15, #fb923c)",
+  "linear-gradient(90deg, #fb7185, #ef4444)",
 ];
 
-onMounted(() => {
+const genres = computed(() => {
+  const list = props.recap.stats.topGenres ?? [];
+  if (!list.length) return [];
+
+  const max = list[0].count;
+
+  return list.map((g: any, index: any) => ({
+    name: g.genre,
+    count: g.count,
+    percent: Math.round((g.count / max) * 100),
+    color: colors[index % colors.length],
+  }));
+});
+
+onMounted(async () => {
+  await nextTick();
+
   gsap.fromTo(
     bars.value,
     { width: "0%" },
     {
-      width: (i) => `${genres[i].percent}%`,
-      duration: 2.5,
+      width: (i) => `${genres.value[i].percent}%`,
+      duration: 2.2,
       ease: "power3.out",
       stagger: 0.12,
     }
