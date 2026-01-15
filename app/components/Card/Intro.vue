@@ -5,13 +5,9 @@
     >
       <div class="text-center space-y-2">
         <div class="flex justify-center">
-          <img
-            src="https://ui-avatars.com/api/?name=daffasyauqi&background=4F46E5&color=fff&size=96"
-            alt="Avatar"
-            class="w-24 h-24 rounded-xl"
-          />
+          <img :src="recap?.user?.avatar" class="w-24 h-24 rounded-xl" />
         </div>
-        <p class="text-white/70 text-lg">DaffaSyauqi</p>
+        <p class="text-white/70 text-lg">{{ recap?.user?.name }}</p>
 
         <p
           class="mt-2 max-w-[24ch] font-bold text-[clamp(3rem,5vw,2.6rem)] text-center text-white tracking-tight leading-none"
@@ -28,3 +24,12 @@
     </div>
   </uiGlassCard>
 </template>
+
+<script setup lang="ts">
+defineProps({
+  recap: {
+    type: Object,
+    required: true,
+  },
+});
+</script>
