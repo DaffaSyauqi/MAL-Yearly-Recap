@@ -5,7 +5,7 @@
     >
       <div class="flex items-center gap-4">
         <img
-          src="https://ui-avatars.com/api/?name=daffasyauqi&background=4F46E5&color=fff&size=64"
+          :src="props.recap?.user?.avatar"
           class="w-28 h-28 rounded-xl"
           alt="Avatar"
         />
@@ -14,7 +14,7 @@
           <h1
             class="text-2xl md:text-3xl font-bold text-white tracking-tight leading-none"
           >
-            DaffaSyauqi's
+            {{ props.recap?.user?.name }}
           </h1>
           <h1
             class="text-2xl md:text-3xl font-bold text-white tracking-tight leading-none"
@@ -39,12 +39,12 @@
               class="flex items-center gap-3 text-white"
             >
               <span class="text-white/40 font-medium">
-                {{ index + 1 }}
+                {{ Number(index) + 1 }}
               </span>
               <span
                 class="font-medium leading-relaxed truncate overflow-hidden whitespace-nowrap flex-1"
               >
-                {{ anime }}
+                {{ anime.title }}
               </span>
             </li>
           </ul>
@@ -64,12 +64,12 @@
               class="flex items-center gap-3 text-white"
             >
               <span class="text-white/40 font-medium">
-                {{ index + 1 }}
+                {{ Number(index) + 1 }}
               </span>
               <span
                 class="font-medium leading-relaxed truncate overflow-hidden whitespace-nowrap flex-1"
               >
-                {{ genre }}
+                {{ genre.name }}
               </span>
             </li>
           </ul>
@@ -83,7 +83,9 @@
           >
             Anime Watched
           </p>
-          <p class="text-2xl font-bold text-white">128</p>
+          <p class="text-2xl font-bold text-white">
+            {{ props.recap?.stats?.totalAnime }}
+          </p>
         </div>
 
         <div class="text-left">
@@ -92,7 +94,9 @@
           >
             Days Spent
           </p>
-          <p class="text-2xl font-bold text-white">67</p>
+          <p class="text-2xl font-bold text-white">
+            {{ props.recap?.stats?.totalDays }}
+          </p>
         </div>
       </div>
     </div>
@@ -100,19 +104,28 @@
 </template>
 
 <script setup lang="ts">
-const topAnime = [
-  "Sousou no Frieren",
-  "Jujutsu Kaisen",
-  "Horimiya",
-  "Attack on Titan",
-  "Oshi no Ko",
-];
+const props = defineProps({
+  recap: {
+    type: Object,
+    required: true,
+  },
+});
 
-const topGenres = [
-  "Romance",
-  "Drama",
-  "Slice of Life",
-  "Supernatural",
-  "Thriller",
-];
+const topAnime = computed(() => {
+  const list = props.recap.stats.topAnime ?? [];
+  if (!list.length) return [];
+
+  return list.map((a: any) => ({
+    title: a.title,
+  }));
+});
+
+const topGenres = computed(() => {
+  const list = props.recap.stats.topGenres ?? [];
+  if (!list.length) return [];
+
+  return list.map((g: any) => ({
+    name: g.genre,
+  }));
+});
 </script>

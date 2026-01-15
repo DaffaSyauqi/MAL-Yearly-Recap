@@ -37,20 +37,20 @@
         class="relative z-20 flex flex-col items-center text-center opacity-0"
       >
         <img
-          :src="props.recap?.stats?.topAnime?.image"
+          :src="props.recap?.stats?.topAnime[0]?.image"
           class="w-56 h-80 object-cover rounded-2xl shadow-2xl"
         />
 
         <h2
           class="mt-6 text-3xl font-bold text-white tracking-tight leading-none"
         >
-          {{ props.recap?.stats?.topAnime?.title }}
+          {{ props.recap?.stats?.topAnime[0]?.title }}
         </h2>
 
         <div class="mt-2 flex items-center gap-2 text-3xl">
           <Icon name="lucide-star" class="text-yellow-400" />
           <span class="text-white/60 tracking-wide">{{
-            props.recap?.stats?.topAnime?.userScore
+            props.recap?.stats?.topAnime[0]?.userScore
           }}</span>
         </div>
       </div>
@@ -76,7 +76,7 @@ const posters = computed(() => {
   const list = props.recap.stats.carousel ?? [];
   if (!list.length) return [];
 
-  return list.map((c: any, index: any) => ({
+  return list.map((c: any) => ({
     image: c.image,
   }));
 });

@@ -9,7 +9,7 @@
 
       <div class="w-full max-w-xl space-y-5">
         <div
-          v-for="(genre, index) in genres"
+          v-for="(genre, index) in topGenres"
           :key="genre.name"
           class="space-y-2"
         >
@@ -61,7 +61,7 @@ const colors = [
   "linear-gradient(90deg, #fb7185, #ef4444)",
 ];
 
-const genres = computed(() => {
+const topGenres = computed(() => {
   const list = props.recap.stats.topGenres ?? [];
   if (!list.length) return [];
 
@@ -82,7 +82,7 @@ onMounted(async () => {
     bars.value,
     { width: "0%" },
     {
-      width: (i) => `${genres.value[i].percent}%`,
+      width: (i) => `${topGenres.value[i].percent}%`,
       duration: 2.2,
       ease: "power3.out",
       stagger: 0.12,
