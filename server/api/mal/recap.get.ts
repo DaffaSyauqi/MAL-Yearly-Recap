@@ -41,9 +41,6 @@ export default defineEventHandler(async (event) => {
         avatar: user.picture,
       },
       stats,
-      recap: {
-        animeList: filtered,
-      },
     };
   } catch (err: any) {
     if (err?.response?.status === 401) {

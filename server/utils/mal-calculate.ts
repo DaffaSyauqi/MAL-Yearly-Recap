@@ -1,10 +1,4 @@
 export function calculateRecapStats(animeList: any[]) {
-  /**
-   * =========================
-   * 1. Pisahkan berdasarkan status
-   * =========================
-   */
-
   const watchedStatuses = ["completed", "watching", "on_hold"];
 
   const watched = animeList.filter((a) =>
@@ -15,12 +9,7 @@ export function calculateRecapStats(animeList: any[]) {
     (a) => a.list_status?.status === "completed"
   );
 
-  /**
-   * =========================
-   * 2. Total Anime & Episode Watched (USER-BASED)
-   * =========================
-   */
-
+  // Total Anime & Episode Watched
   const totalAnime = watched.length;
 
   const totalEpisodes = watched.reduce(
@@ -30,12 +19,7 @@ export function calculateRecapStats(animeList: any[]) {
 
   const totalDays = Math.round((totalEpisodes * 24) / 1440);
 
-  /**
-   * =========================
-   * 3. Top Genres (berdasarkan anime ditonton)
-   * =========================
-   */
-
+  // Top Genres
   const genreCount: Record<string, number> = {};
 
   watched.forEach((item) => {
@@ -49,17 +33,7 @@ export function calculateRecapStats(animeList: any[]) {
     .sort((a, b) => b.count - a.count)
     .slice(0, 5);
 
-  /**
-   * =========================
-   * 4. Ranking Anime (COMPLETED ONLY, USER-BASED)
-   * =========================
-   *
-   * Urutan ranking:
-   * 1. User score (utama)
-   * 2. Finish date (lebih cepat = lebih tinggi)
-   * 3. Global mean (opsional)
-   */
-
+  // Ranking Calculate Anime
   const rankedAnime = completed
     .filter((a) => a.list_status?.score > 0)
     .map((item) => ({
@@ -74,26 +48,18 @@ export function calculateRecapStats(animeList: any[]) {
       mediaType: item.node.media_type,
     }))
     .sort((a, b) => {
-      // 1. User score
       if (b.userScore !== a.userScore) {
         return b.userScore - a.userScore;
       }
 
-      // 2. Finish date (lebih cepat lebih tinggi)
       if (a.finishDate !== b.finishDate) {
         return a.finishDate.localeCompare(b.finishDate);
       }
 
-      // 3. Global mean (opsional)
       return (b.mean || 0) - (a.mean || 0);
     });
 
-  /**
-   * =========================
-   * 5. Top Anime per Season
-   * =========================
-   */
-
+  // Top Anime Seasonal
   const seasons = ["winter", "spring", "summer", "fall"];
 
   const topSeasonal: Record<string, any | null> = {
@@ -109,34 +75,12 @@ export function calculateRecapStats(animeList: any[]) {
     topSeasonal[season] = seasonalAnime[0] ?? null;
   });
 
-  /**
-   * =========================
-   * 6. Top Anime Global
-   * (diambil dari Top Seasonal)
-   * =========================
-   */
-
+  // Top Anime
   const seasonalCandidates = Object.values(topSeasonal).filter(Boolean);
 
-  const topGlobal =
-    seasonalCandidates.sort((a: any, b: any) => {
-      if (b.userScore !== a.userScore) {
-        return b.userScore - a.userScore;
-      }
+  const topAnime = rankedAnime.slice(0, 5);
 
-      if (a.finishDate !== b.finishDate) {
-        return a.finishDate.localeCompare(b.finishDate);
-      }
-
-      return (b.mean || 0) - (a.mean || 0);
-    })[0] ?? null;
-
-  /**
-   * =========================
-   * 7. Carousel Anime (Random dari watched)
-   * =========================
-   */
-
+  // Random Anime
   const shuffled = [...watched].sort(() => 0.5 - Math.random());
 
   const carousel = shuffled.slice(0, 10).map((item) => ({
@@ -144,19 +88,13 @@ export function calculateRecapStats(animeList: any[]) {
     image: item.node.main_picture?.large,
   }));
 
-  /**
-   * =========================
-   * 8. Return Final Recap
-   * =========================
-   */
-
   return {
     totalAnime,
     totalEpisodes,
     totalDays,
     topGenres,
     topSeasonal,
-    topGlobal,
+    topAnime,
     carousel,
   };
 }
