@@ -14,7 +14,7 @@
             textShadow: '0 0 28px rgba(255, 255, 255, 0.35)',
           }"
         >
-          {{ displayCount }}
+          {{ displayAnimeWatched }}
         </p>
 
         <p
@@ -38,12 +38,21 @@
 import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 
-const totalAnime = 128;
-const displayCount = ref(0);
+const props = defineProps({
+  recap: {
+    type: Object,
+    required: true,
+  },
+});
+
+const totalAnime = ref(0);
+const displayAnimeWatched = ref(0);
 
 onMounted(() => {
-  gsap.to(displayCount, {
-    value: totalAnime,
+  totalAnime.value = props.recap?.stats?.totalAnime || 0;
+
+  gsap.to(displayAnimeWatched, {
+    value: totalAnime.value,
     duration: 1.2,
     ease: "power3.out",
     roundProps: "value",
