@@ -26,7 +26,7 @@ import CardIntro from "@/components/Card/Intro.vue";
 import CardAnimeWatched from "@/components/Card/AnimeWatched.vue";
 import CardEpisodeWatched from "@/components/Card/EpisodeWatched.vue";
 import CardFavoriteGenre from "@/components/Card/FavoriteGenre.vue";
-import CardBestAnimeSeason from "@/components/Card/BestAnimeSeason.vue";
+import CardTopAnimeSeasonal from "@/components/Card/TopAnimeSeasonal.vue";
 import CardTopAnime from "@/components/Card/TopAnime.vue";
 import CardRecapSummary from "@/components/Card/RecapSummary.vue";
 import CardClosing from "@/components/Card/Closing.vue";
@@ -36,7 +36,7 @@ const cards = [
   CardAnimeWatched,
   CardEpisodeWatched,
   CardFavoriteGenre,
-  CardBestAnimeSeason,
+  CardTopAnimeSeasonal,
   CardTopAnime,
   CardRecapSummary,
   CardClosing,

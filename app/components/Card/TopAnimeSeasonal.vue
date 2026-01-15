@@ -8,92 +8,117 @@
         Best anime you watched in each season
       </p>
 
-      <div class="grid grid-cols-2 gap-4 sm:gap-6 w-full max-w-xl">
+      <div class="grid grid-cols-2 gap-3 sm:gap-2 w-full max-w-xl pb-2">
         <div
-          v-for="season in seasons"
-          :key="season.name"
+          v-for="(seasons, i) in topSeasonal"
+          :key="seasons.season"
           ref="cardRefs"
-          class="relative rounded-xl border border-white/20 backdrop-blur-md shadow-md p-3 sm:p-4 flex flex-col items-center text-center gap-2 sm:gap-3"
+          class="relative rounded-xl border border-white/20 backdrop-blur-md shadow-md p-3 sm:p-4 flex flex-col items-center text-center gap-2 sm:gap-1"
           :style="{
-            backgroundColor: season.bg,
-            boxShadow: season.glow,
+            backgroundColor: seasons.bg,
+            boxShadow: seasons.glow,
+            borderColor: seasons.border,
           }"
         >
           <div
             class="flex items-center gap-2 text-white/80 text-xs sm:text-sm font-medium"
           >
             <Icon
-              :name="season.icon"
+              :name="seasons.icon"
               class="w-4 h-4"
-              :style="{ color: season.iconColor }"
+              :style="{ color: seasons.iconColor }"
             />
-            <span>{{ season.name }}</span>
+            <span>{{ seasons.season }}</span>
           </div>
 
           <img
-            :src="season.cover"
+            :src="seasons.image"
             alt="Anime cover"
             class="w-full max-w-[60px] sm:max-w-[90px] rounded-lg object-cover"
           />
 
           <p class="text-white font-medium text-xs leading-snug">
-            {{ season.anime }}
+            {{ seasons.title }}
           </p>
+
+          <div class="flex items-center gap-2 mt-auto">
+            <Icon name="lucide-star" class="text-yellow-400" />
+            <p class="text-white font-medium text-md leading-snug">
+              {{ seasons.userScore }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </uiGlassCard>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { gsap } from "gsap";
 
 const containerRef = ref(null);
-const cardRefs = ref([]);
+const cardRefs = ref<HTMLElement[]>([]);
 
-const seasons = [
-  {
+const props = defineProps({
+  recap: {
+    type: Object,
+    required: true,
+  },
+});
+
+const seasonStyleMap: Record<string, any> = {
+  winter: {
     icon: "lucide-snowflake",
-    iconColor: "#BFDBFE", // blue-200
-    name: "Winter",
-    anime: "Sousou no Frieren",
-    cover: "https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
+    iconColor: "#BFDBFE",
     bg: "rgba(59, 130, 246, 0.50)",
     glow: "0 0 42px rgba(59, 130, 246, 0.55)",
     border: "rgba(147, 197, 253, 0.45)",
   },
-  {
+  spring: {
     icon: "lucide-flower",
-    iconColor: "#FBCFE8", // pink-200
-    name: "Spring",
-    anime: "Horimiya: Missing Pieces",
-    cover: "https://placehold.co/400x600/png",
+    iconColor: "#FBCFE8",
     bg: "rgba(244, 114, 182, 0.50)",
     glow: "0 0 42px rgba(244, 114, 182, 0.55)",
     border: "rgba(251, 207, 232, 0.45)",
   },
-  {
+  summer: {
     icon: "lucide-sun",
-    iconColor: "#FDE68A", // yellow-200
-    name: "Summer",
-    anime: "Jujutsu Kaisen S3",
-    cover: "https://placehold.co/400x600/png",
+    iconColor: "#FDE68A",
     bg: "rgba(251, 191, 36, 0.50)",
     glow: "0 0 42px rgba(251, 191, 36, 0.55)",
     border: "rgba(253, 230, 138, 0.45)",
   },
-  {
+  fall: {
     icon: "lucide-leaf",
-    iconColor: "#FECACA", // red-200
-    name: "Fall",
-    anime: "Attack on Titan Final",
-    cover: "https://placehold.co/400x600/png",
+    iconColor: "#FECACA",
     bg: "rgba(248, 113, 113, 0.50)",
     glow: "0 0 42px rgba(248, 113, 113, 0.55)",
     border: "rgba(254, 202, 202, 0.45)",
   },
-];
+};
+
+const topSeasonal = computed(() => {
+  const seasonal = props.recap?.stats?.topSeasonal;
+  if (!seasonal) return [];
+
+  const order = ["winter", "spring", "summer", "fall"];
+
+  return order
+    .map((season) => {
+      const anime = seasonal[season];
+      if (!anime) return null;
+
+      return {
+        season: season.charAt(0).toUpperCase() + season.slice(1),
+        title: anime.title,
+        image: anime.image,
+        userScore: anime.userScore,
+        ...seasonStyleMap[season],
+      };
+    })
+    .filter(Boolean);
+});
 
 onMounted(() => {
   gsap.from(cardRefs.value, {
