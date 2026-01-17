@@ -29,13 +29,6 @@
           </div>
         </div>
       </div>
-
-      <p
-        class="max-w-[42ch] text-white/50 text-[clamp(1rem,1.1vw,1rem)] leading-relaxed"
-      >
-        Looks like you enjoy emotional stories and character-driven anime more
-        than anything else.
-      </p>
     </div>
   </uiGlassCard>
 </template>

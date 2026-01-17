@@ -12,7 +12,7 @@
         <p
           class="mt-2 max-w-[24ch] font-bold text-[clamp(3rem,5vw,2.6rem)] text-center text-white tracking-tight leading-none"
         >
-          Your Anime Recap 2025
+          Your MAL Recap 2025
         </p>
 
         <p

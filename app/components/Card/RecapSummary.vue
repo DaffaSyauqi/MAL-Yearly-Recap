@@ -19,7 +19,7 @@
           <h1
             class="text-2xl md:text-3xl font-bold text-white tracking-tight leading-none"
           >
-            MyAnimeList Yearly-Recap 2025
+            MyAnimeList Yearly Recap 2025
           </h1>
         </div>
       </div>
