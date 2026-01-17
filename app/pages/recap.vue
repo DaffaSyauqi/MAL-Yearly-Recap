@@ -8,11 +8,12 @@
   >
     <uiLoading v-if="isLoading" />
 
-    <div v-else ref="cardContainer" class="w-full h-full">
+    <div v-else ref="cardContainer" class="w-full h-full" data-recap-summary>
       <component
         :is="cards[activeIndex]"
         :key="activeIndex"
         :recap="recapData"
+        @regenerate="fetchRecap"
       />
       <uiProgressDots :total="cards.length" :active="activeIndex" />
     </div>
@@ -50,7 +51,10 @@ const recapData = ref(null);
 let isAnimating = false;
 let touchStartY = 0;
 
-onMounted(async () => {
+const fetchRecap = async () => {
+  isLoading.value = true;
+  activeIndex.value = 0;
+
   recapData.value = await $fetch("/api/mal/recap");
 
   isLoading.value = false;
@@ -67,6 +71,10 @@ onMounted(async () => {
       ease: "power3.out",
     }
   );
+};
+
+onMounted(() => {
+  fetchRecap();
 });
 
 const animateCard = (direction = "next") => {

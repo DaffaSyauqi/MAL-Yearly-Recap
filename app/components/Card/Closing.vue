@@ -20,16 +20,10 @@
       <div class="flex gap-2">
         <button
           class="inline-flex items-center bg-blue-500 hover:bg-blue-600 px-6 md:px-10 py-2 md:py-3 border-none rounded-[50px] font-medium text-[12px] text-white md:text-[14px] cursor-pointer"
+          @click="onGenerateAgain"
         >
           <Icon name="lucide-refresh-cw" class="w-5 h-5 mr-2" />
           <span>Generate Again</span>
-        </button>
-
-        <button
-          class="inline-flex items-center bg-white/5 hover:bg-white/10 shadow-md backdrop-blur-md px-6 md:px-10 py-2 md:py-3 border border-white/20 rounded-full font-medium text-[12px] text-white/50 md:text-[14px] cursor-pointer"
-        >
-          <Icon name="lucide-share-2" class="w-5 h-5 mr-2" />
-          <span>Share</span>
         </button>
 
         <button
@@ -42,3 +36,11 @@
     </div>
   </uiGlassCard>
 </template>
+
+<script setup lang="ts">
+const emit = defineEmits(["regenerate"]);
+
+const onGenerateAgain = () => {
+  emit("regenerate");
+};
+</script>
