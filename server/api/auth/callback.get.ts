@@ -39,6 +39,7 @@ export default defineEventHandler(async (event) => {
     httpOnly: true,
     sameSite: "lax",
     path: "/",
+    secure: process.env.NODE_ENV === "production",
   });
 
   deleteCookie(event, "mal_code_verifier");

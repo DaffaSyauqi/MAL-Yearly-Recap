@@ -20,6 +20,10 @@
   </div>
 </template>
 <script setup>
+definePageMeta({
+  middleware: "auth",
+});
+
 import { ref } from "vue";
 import { gsap } from "gsap";
 

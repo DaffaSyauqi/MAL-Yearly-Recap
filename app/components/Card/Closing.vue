@@ -28,6 +28,7 @@
 
         <button
           class="inline-flex items-center bg-white/5 hover:bg-white/10 shadow-md backdrop-blur-md px-6 md:px-10 py-2 md:py-3 border border-white/20 rounded-full font-medium text-[12px] text-white/50 md:text-[14px] cursor-pointer"
+          @click="onLogout"
         >
           <Icon name="lucide-log-out" class="w-5 h-5 mr-2" />
           <span>Log Out</span>
@@ -42,5 +43,12 @@ const emit = defineEmits(["regenerate"]);
 
 const onGenerateAgain = () => {
   emit("regenerate");
+};
+
+const onLogout = async () => {
+  await $fetch("/api/auth/logout", {
+    method: "POST",
+  });
+  navigateTo("/");
 };
 </script>
