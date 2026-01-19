@@ -12,8 +12,8 @@
         </h2>
 
         <p class="text-white/50 text-[clamp(1rem,1.1vw,1rem)] leading-relaxed">
-          This was your MyAnimeList journey in 2025. Hope it brought back some
-          good memories.
+          Your anime journey, wrapped up. From first episodes to final endings —
+          this was your 2025.
         </p>
       </div>
 

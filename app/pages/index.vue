@@ -31,8 +31,8 @@
       <p
         class="mt-1 max-w-[42ch] mx-auto text-white/60 text-[clamp(0.9rem,1.2vw,1.05rem)] text-center leading-relaxed"
       >
-        Relive your anime journey. From favorite genres to the anime that
-        defined your year.
+        Your personalized MyAnimeList recap — favorite genres, top anime, and
+        highlights from your year.
       </p>
 
       <div class="flex items-center justify-center gap-4 mt-8">
