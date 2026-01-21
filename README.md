@@ -47,7 +47,7 @@ pnpm install
   - App Name: Any name you prefer (e.g. MyAnimeList Recap)
   - App Type: Web
   - App Description: Any description (e.g. A personal yearly anime recap web application)
-  - App Redirect URL (example): http://localhost:3000/api/auth
+  - App Redirect URL: (e.g http://localhost:3000/api/auth)
   
   Make sure the redirect URL exactly matches the redirect URI used in your application. OAuth authentication will fail if they do not match.
 
