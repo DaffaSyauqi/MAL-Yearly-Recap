@@ -31,7 +31,7 @@ pnpm install
 ```
 
 ### 3. Configure Environment Variables
-### How to Get MyAnimeList Client ID, Client Secret, and Redirect URI
+#### How to Get MyAnimeList Client ID, Client Secret, and Redirect URI
   This application uses the official MyAnimeList OAuth 2.0 authentication flow. Follow these steps to obtain the required credentials.
 
 #### Step 1: Create a MyAnimeList Account
