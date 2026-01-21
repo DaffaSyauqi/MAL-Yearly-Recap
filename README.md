@@ -7,9 +7,7 @@ A web application that generates a personalized yearly anime recap based on your
 ## Features
 - MyAnimeList OAuth Login using the official authentication flow
 - Personalized yearly recap generated from your anime watching history
-- Interactive card-based navigation with smooth animations
-- Responsive layout for desktop and mobile devices
-- Modern glassmorphism-inspired user interface
+- Interactive & modern glassmorphism card-based navigation with smooth animations
 
 ---
 
@@ -33,8 +31,8 @@ pnpm install
 ```
 
 ### 3. Configure Environment Variables
-How to Get MyAnimeList Client ID, Client Secret, and Redirect URI
-This application uses the official MyAnimeList OAuth 2.0 authentication flow. Follow these steps to obtain the required credentials.
+### How to Get MyAnimeList Client ID, Client Secret, and Redirect URI
+  This application uses the official MyAnimeList OAuth 2.0 authentication flow. Follow these steps to obtain the required credentials.
 
 #### Step 1: Create a MyAnimeList Account
   If you do not already have one, create an account at: https://myanimelist.net
@@ -48,10 +46,8 @@ This application uses the official MyAnimeList OAuth 2.0 authentication flow. Fo
   2. Fill in the application form with the following recommended values:
   - App Name: Any name you prefer (e.g. MyAnimeList Recap)
   - App Type: Web
-  - App Description: A personal yearly anime recap web application
-  - App Redirect URL (example):
-    For local development: http://localhost:3000/api/auth/
-    For production: https://your-domain.com/api/auth/
+  - App Description: Any description (e.g. A personal yearly anime recap web application)
+  - App Redirect URL (example): http://localhost:3000/api/auth
   
   Make sure the redirect URL exactly matches the redirect URI used in your application. OAuth authentication will fail if they do not match.
 
@@ -69,7 +65,7 @@ This application uses the official MyAnimeList OAuth 2.0 authentication flow. Fo
   MAL_REDIRECT_URI=your_myanimelist_redirect_uri
   ```
 
-### 4. Run Development Server
+### 4. Run Local Development Server
 ```bash
 pnpm run dev
 ```
