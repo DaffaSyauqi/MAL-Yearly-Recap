@@ -20,8 +20,15 @@
   </div>
 </template>
 <script setup>
+useSeoMeta({
+  title: "Your 2025 Anime Journey Recap",
+  description:
+    "A personalized summary of your anime journey in 2025 based on your MyAnimeList activity.",
+});
+
 definePageMeta({
   middleware: "auth",
+  title: "Your Anime Journey Recap",
 });
 
 import { ref } from "vue";

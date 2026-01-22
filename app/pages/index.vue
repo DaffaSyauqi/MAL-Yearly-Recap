@@ -61,6 +61,20 @@
 </template>
 
 <script setup>
+useSeoMeta({
+  title: "MyAnimeList Yearly Recap",
+  description:
+    "Your personalized MyAnimeList recap — favorite genres, top anime, and highlights from your year.",
+  ogTitle: "MyAnimeList Yearly Recap",
+  ogDescription: "Your personalized anime recap powered by MyAnimeList.",
+  ogType: "website",
+  ogImage: "/og-image.png",
+  twitterCard: "summary_large_image",
+});
+
+definePageMeta({
+  title: "MyAnimeList Yearly Recap",
+});
 import { ref, onMounted } from "vue";
 import gsap from "gsap";
 

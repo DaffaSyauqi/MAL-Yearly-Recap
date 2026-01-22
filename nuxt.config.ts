@@ -1,4 +1,16 @@
 export default defineNuxtConfig({
+  app: {
+    head: {
+      title: "MyAnimeList Yearly Anime Recap",
+      meta: [
+        {
+          name: "description",
+          content:
+            "Your personalized MyAnimeList recap — favorite genres, top anime, and highlights from your year.",
+        },
+      ],
+    },
+  },
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
   modules: ["@nuxtjs/tailwindcss", "@nuxt/icon"],
