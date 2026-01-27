@@ -88,6 +88,41 @@ onMounted(() => {
   fetchRecap();
 });
 
+watch(recapData, (data) => {
+  if (!data?.stats) return;
+
+  const images = [];
+
+  if (data.user?.avatar) {
+    images.push(data.user.avatar);
+  }
+
+  if (Array.isArray(data.stats.topAnime)) {
+    images.push(...data.stats.topAnime.map((a) => a.image));
+  }
+
+  if (data.stats.topSeasonal && typeof data.stats.topSeasonal === "object") {
+    images.push(
+      ...Object.values(data.stats.topSeasonal).map((item) => item?.image)
+    );
+  }
+
+  if (Array.isArray(data.stats.carousel)) {
+    images.push(...data.stats.carousel.map((c) => c.image));
+  }
+
+  const uniqueImages = [...new Set(images.filter(Boolean))];
+  if (!uniqueImages.length) return;
+
+  useHead({
+    link: uniqueImages.map((src) => ({
+      rel: "preload",
+      as: "image",
+      href: src,
+    })),
+  });
+});
+
 const animateCard = (direction = "next") => {
   const yFrom = direction === "next" ? 60 : -60;
   const yTo = direction === "next" ? -60 : 60;

@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/icon"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/icon", "@nuxt/image"],
   runtimeConfig: {
     malClientSecret: process.env.MAL_CLIENT_SECRET,
     public: {
@@ -26,5 +26,8 @@ export default defineNuxtConfig({
     config: {},
     viewer: true,
     exposeConfig: false,
+  },
+  image: {
+    domains: ["cdn.myanimelist.net"],
   },
 });

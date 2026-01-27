@@ -21,12 +21,13 @@
             class="pointer-events-none absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-black/30 to-transparent z-10"
           />
           <div ref="carouselTrack" class="flex gap-3 w-max">
-            <img
+            <NuxtImg
               v-for="(poster, i) in loopPosters"
               :key="i"
               :src="poster?.image"
               class="w-32 md:w-48 aspect-[2/3] object-cover rounded-lg"
               draggable="false"
+              placeholder
             />
           </div>
         </div>
@@ -36,9 +37,10 @@
         ref="phase2"
         class="relative z-20 flex flex-col items-center text-center opacity-0"
       >
-        <img
+        <NuxtImg
           :src="props.recap?.stats?.topAnime[0]?.image"
           class="w-56 h-80 object-cover rounded-2xl shadow-2xl"
+          placeholder
         />
 
         <h2

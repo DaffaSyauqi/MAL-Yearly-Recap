@@ -4,10 +4,10 @@
       class="w-full h-full flex flex-col justify-between space-y-8 pb-8 md:p-8"
     >
       <div class="flex items-center gap-4">
-        <img
+        <NuxtImg
           :src="props.recap?.user?.avatar"
           class="w-28 h-28 rounded-xl"
-          alt="Avatar"
+          placeholder
         />
 
         <div class="flex flex-col items-start text-left gap-1">
