@@ -2,6 +2,11 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
   const query = getQuery(event);
 
+  if (query.error) {
+    deleteCookie(event, "mal_code_verifier")
+    return sendRedirect(event, "/")
+  }
+
   const code = query.code as string;
   if (!code) {
     throw createError({ statusCode: 400, statusMessage: "No code provided" });
