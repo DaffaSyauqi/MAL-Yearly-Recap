@@ -31,10 +31,10 @@
             <span>{{ seasons.season }}</span>
           </div>
 
-          <img
+          <NuxtImg
             :src="seasons.image"
-            alt="Anime cover"
             class="w-full max-w-[60px] sm:max-w-[90px] rounded-lg object-cover"
+            placeholder
           />
 
           <p class="text-white font-medium text-xs leading-snug">

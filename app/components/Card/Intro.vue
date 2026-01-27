@@ -5,7 +5,11 @@
     >
       <div class="text-center space-y-2">
         <div class="flex justify-center">
-          <img :src="props.recap?.user?.avatar" class="w-24 h-24 rounded-xl" />
+          <NuxtImg
+            :src="props.recap?.user?.avatar"
+            class="w-24 h-24 rounded-xl"
+            placeholder=""
+          />
         </div>
         <p class="text-white/70 text-lg">{{ props.recap?.user?.name }}</p>
 
